@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+		xmlns:v ="clr-namespace:BoozeFitness.Views;assembly=BoozeFitness"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="BoozeFitness.Views.MainWindow"
+		x:DataType="vm:NavigationVM"
+		Content="{Binding CurrentViewmodel}"
+		FontSize="50"
+		
+        Title="MainWindow">
+	<Window.DataTemplates>
+		<DataTemplate DataType="{x:Type vm:EnterYourNameVM}">
+			<v:EnterYourNameView></v:EnterYourNameView>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type vm:SelectCountryVM}">
+			<v:SelectCountryView></v:SelectCountryView>
+		</DataTemplate>
+	</Window.DataTemplates>
+</Window>

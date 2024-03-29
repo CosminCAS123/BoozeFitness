@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		     xmlns:i ="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+			 xmlns:ia ="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:DataType="vm:SelectCountryVM"
+             x:Class="BoozeFitness.Views.SelectCountryView">
+
+	<StackPanel VerticalAlignment="Center"
+				Spacing="0">
+		<TextBlock HorizontalAlignment="Center"
+				   Margin="0 , 0 , 0 , 5"
+				   FontSize="20">
+			Where are you from?
+		</TextBlock>
+		
+		
+		<AutoCompleteBox HorizontalAlignment="Center"
+						 Width="200"
+						 Watermark="Type your country"
+						 FilterMode="StartsWith"
+						 Text="{Binding AutoCompleteBoxText , Mode=OneWayToSource}"
+						 ItemsSource="{Binding Countries}"
+						 IsDropDownOpen="{Binding DropDownOpened , Mode=OneWayToSource}"
+						>
+
+			
+		</AutoCompleteBox>
+		<Image Source="{Binding CurrentFlag}"
+			   Width="100"
+			   Height="80"
+			   Margin="0 , 50 , 0 , 0"
+			  >
+
+		</Image>
+	</StackPanel>
+	
+</UserControl>

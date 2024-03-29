@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:CompileBindings="True"
+			 x:DataType="vm:EnterYourNameVM"
+             x:Class="BoozeFitness.Views.EnterYourNameView">
+
+	<StackPanel HorizontalAlignment="Center"
+				
+				VerticalAlignment="Center"
+				Spacing="8"
+				>
+		<!--
+		<Image Source="avares://BoozeFitness/Assets/wavinganimegirl.png"></Image>
+		-->
+		
+		<TextBlock>
+			Hello there! Let's get in shape.
+		</TextBlock>
+	
+		  <TextBox Watermark="Enter your name"
+				   Width="200"
+		   		></TextBox>
+
+		
+		<Button HorizontalAlignment="Center"
+				Margin="0 , 0 , 0 , 0"
+				>
+		      Fine...
+		</Button>
+		
+	</StackPanel>
+	
+	
+</UserControl>
