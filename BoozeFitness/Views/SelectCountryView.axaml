@@ -31,6 +31,7 @@
 		</AutoCompleteBox>
 		<Image Source="{Binding CurrentFlag}"
 			   Width="100"
+			   IsVisible="{Binding IsFlagVisible}"
 			   Height="80"
 			   Margin="0 , 50 , 0 , 0"
 			  >

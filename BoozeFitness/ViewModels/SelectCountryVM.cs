@@ -25,14 +25,20 @@ namespace BoozeFitness.ViewModels
             get => this.dropdownopened;
             set => this.RaiseAndSetIfChanged(ref dropdownopened, value);
         }
-      
 
+        private bool isflagvisible = false;
+        public bool IsFlagVisible
+        {
+            get => this.isflagvisible;
+            set => this.RaiseAndSetIfChanged(ref this.isflagvisible, value);
+        }
          public enum Country
         {
             Romania,
             Italy,
             Spain,
-            England
+            England,
+            None
 
         }
         private List<string>? _countries;
@@ -57,22 +63,25 @@ namespace BoozeFitness.ViewModels
             this.WhenAnyValue(x => x.DropDownOpened).
                 Subscribe(x => ChangeFlag());
            
+               
+           
 
         }
     
        private void ChangeFlag()
         {
             //you look for the flag
-            
+
             if (DropDownOpened == true)
             {
                 var first_letter = AutoCompleteBoxText[0];
-
+                IsFlagVisible = true;
                 if (first_letter == 'R' || first_letter == 'r') CurrentFlag = Flags[Country.Romania];
                 else if (first_letter == 'I' || first_letter == 'i') CurrentFlag = Flags[Country.Italy];
                 else if (first_letter == 'S' || first_letter == 's') CurrentFlag = Flags[Country.Spain];
                 else if (first_letter == 'E' || first_letter == 'e') CurrentFlag = Flags[Country.England];
             }
+            else IsFlagVisible = false;
         }
         private void AddFlagsToDictionary()
         {
@@ -84,6 +93,7 @@ namespace BoozeFitness.ViewModels
             Flags[Country.Italy] = ImageHelper.LoadFromResource(new Uri(uri_default + "ItalyIcon.png"));
             Flags[Country.Spain] = ImageHelper.LoadFromResource(new Uri(uri_default + "SpainIcon.png"));
             Flags[Country.England] = ImageHelper.LoadFromResource(new Uri(uri_default + "EnglandIcon.png"));
+            
 
 
         }
