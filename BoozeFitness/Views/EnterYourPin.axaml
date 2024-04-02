@@ -1,37 +1,31 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-			 x:CompileBindings="True"
-			 x:DataType="vm:EnterYourNameVM"
-             x:Class="BoozeFitness.Views.EnterYourNameView">
+			  xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+			 x:DataType="vm:EnterYourPinVM"
+             x:Class="BoozeFitness.Views.EnterYourPin">
 
 	<StackPanel HorizontalAlignment="Center"
-				
 				VerticalAlignment="Center"
 				Spacing="8"
 				>
-		
-		
 		<TextBlock>
-			Hello there! Let's get in shape.
+			Awesome! Now set a 6-digit code for your account.
 		</TextBlock>
-	
-		  <TextBox Watermark="Enter your username"
-				   Text="{Binding Username , Mode=OneWayToSource}"
-				   Width="200"
+
+		<TextBox Watermark="6-digit code"
+				 Text="{Binding Pin , Mode=OneWayToSource}"
+				 Width="200"
 		   		></TextBox>
 
-		
+
 		<Button HorizontalAlignment="Center"
 				Margin="0 , 0 , 0 , 0"
 				>
-		      Fine...
+			Got it
 		</Button>
-		
+
 	</StackPanel>
-	
-	
 </UserControl>

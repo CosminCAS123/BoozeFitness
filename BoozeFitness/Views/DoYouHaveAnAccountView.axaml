@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:DataType="vm:DoYouHaveAnAccountVM"
+             x:Class="BoozeFitness.Views.DoYouHaveAnAccountView">
+
+	<StackPanel HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Spacing="20"
+				>
+		
+		<Border Background="Gainsboro"
+        BorderBrush="Black"
+        BorderThickness="2"
+        CornerRadius="10"			
+          BoxShadow="5 5 10 0 DarkGray">
+			<Button Width="122"
+				Height="30"
+				  
+					Command="{Binding CreateAccountCommand}"
+				>
+				Create Account
+			</Button>
+		</Border>
+		
+		<Border Background="Gainsboro"
+				
+	BorderBrush="Black"
+	BorderThickness="2"
+	CornerRadius="10"
+				
+	  BoxShadow="5 5 10 0 DarkGray">
+			
+			
+			<Button Width="122"
+				Height="30"
+				
+					Command="{Binding ExistingAccountCommand}"
+					HorizontalContentAlignment="Center">
+				I got one!
+			</Button>
+			</Border>
+	</StackPanel>
+	
+</UserControl>

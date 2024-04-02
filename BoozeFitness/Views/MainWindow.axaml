@@ -8,7 +8,7 @@
         x:Class="BoozeFitness.Views.MainWindow"
 		x:DataType="vm:NavigationVM"
 		Content="{Binding CurrentViewmodel}"
-		FontSize="50"
+		
 		
         Title="MainWindow">
 	<Window.DataTemplates>
@@ -18,5 +18,16 @@
 		<DataTemplate DataType="{x:Type vm:SelectCountryVM}">
 			<v:SelectCountryView></v:SelectCountryView>
 		</DataTemplate>
+		<DataTemplate DataType="{x:Type vm:DoYouHaveAnAccountVM}">
+			<v:DoYouHaveAnAccountView></v:DoYouHaveAnAccountView>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type vm:EnterYourPinVM}">
+			<v:EnterYourPin></v:EnterYourPin>
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type vm:EnterExistingAccountVM}">
+			<v:EnterExisitngAccountView></v:EnterExisitngAccountView>
+		</DataTemplate>
+
+
 	</Window.DataTemplates>
 </Window>

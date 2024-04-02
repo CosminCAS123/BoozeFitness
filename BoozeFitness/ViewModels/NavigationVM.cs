@@ -19,7 +19,7 @@ namespace BoozeFitness.ViewModels
         public NavigationVM()
         {
             //add first viewmodel
-            CurrentViewmodel = new SelectCountryVM();
+            CurrentViewmodel = new DoYouHaveAnAccountVM(this);
 
 
         }
