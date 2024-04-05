@@ -25,7 +25,7 @@
 			<v:EnterYourPin></v:EnterYourPin>
 		</DataTemplate>
 		<DataTemplate DataType="{x:Type vm:EnterExistingAccountVM}">
-			<v:EnterExisitngAccountView></v:EnterExisitngAccountView>
+			<v:EnterExistingAccountView></v:EnterExistingAccountView>
 		</DataTemplate>
 
 

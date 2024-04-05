@@ -6,10 +6,12 @@
 			  xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
 			 x:DataType="vm:EnterYourPinVM"
              x:Class="BoozeFitness.Views.EnterYourPin">
-
+	<Grid RowDefinitions="*,*">
 	<StackPanel HorizontalAlignment="Center"
-				VerticalAlignment="Center"
+				VerticalAlignment="Bottom"
 				Spacing="8"
+				Margin="0 , 0 , 0 , -50"
+				
 				>
 		<TextBlock>
 			Awesome! Now set a 6-digit code for your account.
@@ -18,6 +20,7 @@
 		<TextBox Watermark="6-digit code"
 				 Text="{Binding Pin , Mode=OneWayToSource}"
 				 Width="200"
+				 MaxLength="6"
 		   		></TextBox>
 
 
@@ -28,4 +31,14 @@
 		</Button>
 
 	</StackPanel>
+		<Label Grid.Row="1"
+			   HorizontalAlignment="Center"
+			   Foreground="Red"
+			   Margin="0 , 50 , 0 , 0"
+			   FontSize="18"
+			   x:DataType="vm:EnterYourPinVM"
+			   Content="{Binding Error_Label}">
+
+		</Label>
+	</Grid>
 </UserControl>
