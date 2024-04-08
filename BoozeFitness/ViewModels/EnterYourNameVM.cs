@@ -40,7 +40,7 @@ namespace BoozeFitness.ViewModels
             this.nav = navigationVM;
             var canExecute = this.WhenAnyValue(x => x.Username, (userName) =>
             {
-                
+               
                 if (string.IsNullOrEmpty(userName))
                 {
                      if (!first_time_entering) Error_Label = ErrorClass.NAME_IS_EMPTY_ERROR;

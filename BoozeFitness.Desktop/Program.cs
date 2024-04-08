@@ -16,6 +16,7 @@ class Program
     public static int Main(string[] args)
     {
         var builder = BuildAvaloniaApp();
+        
         if(args.Contains("--drm"))
         {
             SilenceConsole();

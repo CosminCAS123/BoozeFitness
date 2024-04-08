@@ -2,6 +2,7 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Text;
@@ -28,31 +29,40 @@ namespace BoozeFitness.ViewModels
         {
             get => this._pin;
             set => this.RaiseAndSetIfChanged(ref this._pin, value);
-        }
+        } 
         public ReactiveCommand<Unit, Unit> CreateAccountCommand { get; set; }
-        private bool first_time_entering = true;
         private NavigationVM nav;
+        private bool first_time_entering = true;
         public EnterYourPinVM(string username , NavigationVM navigationVM)
         {
             this.nav = navigationVM;
-            var canExecute =  this.WhenAnyValue(x => x.Pin,
-                (pass) =>
+           
+            var canExecute = this.WhenAnyValue(x => x.Pin , 
+                (pin) =>
                 {
-                   if (string.IsNullOrEmpty(pass))
+                    if (string.IsNullOrEmpty(pin))
                     {
                         if (first_time_entering) first_time_entering = false;
                         else Error_Label = ErrorClass.PIN_IS_EMPTY_ERROR;
                         return false;
                     }
-                    if (!pass.All(char.IsDigit))
+                    if (!pin.All(char.IsDigit))
                     {
                         Error_Label = ErrorClass.PIN_CONTAINS_OTHER_CHAR;
                         return false;
                     }
+                    if (pin.Length < 6) return false;
+                    Error_Label = ErrorClass.NO_ERROR;
                     return true;
                 });
-            CreateAccountCommand = ReactiveCommand.Create();
+            CreateAccountCommand = ReactiveCommand.Create(createAccountCmd , canExecute);
            
+        }
+        private void createAccountCmd()
+        {
+            //create the user and add it into the db
+
+
         }
 
     }
