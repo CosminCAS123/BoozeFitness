@@ -8,16 +8,21 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			 x:DataType="vm:SelectCountryVM"
              x:Class="BoozeFitness.Views.SelectCountryView">
-
-	<StackPanel VerticalAlignment="Center"
-				Spacing="0">
+	<Grid RowDefinitions="* , *">
+	<StackPanel VerticalAlignment="Bottom"
+				Spacing="3"
+				Grid.Row="0"
+				>
+		
 		<TextBlock HorizontalAlignment="Center"
 				   Margin="0 , 0 , 0 , 5"
 				   FontSize="20">
 			Where are you from?
 		</TextBlock>
-		
-		
+
+		<StackPanel Orientation="Horizontal"
+					HorizontalAlignment="Center"
+					>
 		<AutoCompleteBox HorizontalAlignment="Center"
 						 Width="200"
 						 Watermark="Type your country"
@@ -26,17 +31,22 @@
 						 ItemsSource="{Binding Countries}"
 						 IsDropDownOpen="{Binding DropDownOpened , Mode=OneWayToSource}"
 						>
-
+         
 			
 		</AutoCompleteBox>
+			<Button Margin="5 , 0 , 0 , 0"
+					Command="{Binding GoToAgeSelectionCommand}">Go</Button>
+		</StackPanel>
 		<Image Source="{Binding CurrentFlag}"
 			   Width="100"
 			   IsVisible="{Binding IsFlagVisible}"
 			   Height="80"
 			   Margin="0 , 50 , 0 , 0"
+			   Grid.Row="1"
 			  >
 
 		</Image>
 	</StackPanel>
+	</Grid>
 	
 </UserControl>

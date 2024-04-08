@@ -53,21 +53,38 @@ namespace BoozeFitness.ViewModels
             get => this.current_flag;
             set => this.RaiseAndSetIfChanged(ref this.current_flag, value);
         }
-        public string AutoCompleteBoxText { get; set; }
-        
-        public SelectCountryVM()
+        private string autotext;
+        public string AutoCompleteBoxText
+        {
+            get => this.autotext;
+            set => this.RaiseAndSetIfChanged(ref autotext, value);
+        }
+        private string UsernameToPass;
+        private string PinToPass;
+        public ReactiveCommand<Unit , Unit> GoToAgeSelectionCommand { get; set; }
+        public SelectCountryVM(string username , string pin)
         {
             Countries = new List<string>() { Country.Romania.ToString() , Country.Italy.ToString() , Country.Spain.ToString() , Country.England.ToString()};
 
             AddFlagsToDictionary();
             this.WhenAnyValue(x => x.DropDownOpened).
                 Subscribe(x => ChangeFlag());
-           
-               
+            var canExecute = this.WhenAnyValue(x => x.AutoCompleteBoxText,
+                (country) =>
+                {
+
+                    if (string.Equals(country as string, "Romania") || string.Equals(country as string, "Italy") || string.Equals(country as string, "England") || string.Equals(country as string, "Spain")) return true;
+                    return false;
+                });
+
+            this.GoToAgeSelectionCommand = ReactiveCommand.Create(goToAgeSelectionCmd, canExecute);
            
 
         }
-    
+       private void goToAgeSelectionCmd()
+        {
+
+        }
        private void ChangeFlag()
         {
             //you look for the flag

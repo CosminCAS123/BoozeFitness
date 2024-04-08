@@ -29,14 +29,15 @@ namespace BoozeFitness.ViewModels
         {
             get => this._pin;
             set => this.RaiseAndSetIfChanged(ref this._pin, value);
-        } 
-        public ReactiveCommand<Unit, Unit> CreateAccountCommand { get; set; }
+        }
+        private string UsernameToPass;
+        public ReactiveCommand<Unit, Unit> GoToCountrySelectionCommand { get; set; }
         private NavigationVM nav;
         private bool first_time_entering = true;
         public EnterYourPinVM(string username , NavigationVM navigationVM)
         {
             this.nav = navigationVM;
-           
+            this.UsernameToPass = username;
             var canExecute = this.WhenAnyValue(x => x.Pin , 
                 (pin) =>
                 {
@@ -55,15 +56,10 @@ namespace BoozeFitness.ViewModels
                     Error_Label = ErrorClass.NO_ERROR;
                     return true;
                 });
-            CreateAccountCommand = ReactiveCommand.Create(createAccountCmd , canExecute);
+            GoToCountrySelectionCommand = ReactiveCommand.Create(goToCountrySelectionCmd, canExecute);
            
         }
-        private void createAccountCmd()
-        {
-            //create the user and add it into the db
-
-
-        }
+        private void goToCountrySelectionCmd() => this.nav.CurrentViewmodel = new SelectCountryVM(UsernameToPass, this.Pin);
 
     }
 }
