@@ -2,12 +2,11 @@ using Avalonia.Controls;
 
 namespace BoozeFitness.Views
 {
-    public partial class EnterYourPin : UserControl
+    public partial class EnterYourAgeView : UserControl
     {
-        public EnterYourPin()
+        public EnterYourAgeView()
         {
             InitializeComponent();
-
         }
     }
 }

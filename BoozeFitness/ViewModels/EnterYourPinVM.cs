@@ -59,7 +59,7 @@ namespace BoozeFitness.ViewModels
             GoToCountrySelectionCommand = ReactiveCommand.Create(goToCountrySelectionCmd, canExecute);
            
         }
-        private void goToCountrySelectionCmd() => this.nav.CurrentViewmodel = new SelectCountryVM(UsernameToPass, this.Pin);
+        private void goToCountrySelectionCmd() => this.nav.CurrentViewmodel = new SelectCountryVM(UsernameToPass, this.Pin , this.nav);
 
     }
 }

@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:DataType="vm:SelectAgeVM"
+			 HorizontalAlignment="Center"
+			 VerticalAlignment="Center"
+			 Margin="0 , 100 , 0 , 0"
+			 Padding="0 , 0 , 0 , 50"
+             x:Class="BoozeFitness.Views.EnterYourAgeView">
+	<UserControl.Styles>
+		<Style Selector="ToggleButton">
+			<Setter Property="Width" Value="60"></Setter>
+			<Setter Property="Height" Value="30"></Setter>
+			<Setter Property="HorizontalContentAlignment"
+					Value="Center"></Setter>
+			<Setter Property="Command" 
+					Value="{Binding AgeChosenCommand}"></Setter>
+			<Setter Property="CommandParameter"
+					Value="{Binding $self}"></Setter>
+		  
+		</Style>
+	</UserControl.Styles>
+	<StackPanel Spacing="16">
+		<TextBlock HorizontalAlignment="Center">
+			We need to know your age :)
+		</TextBlock>
+		<StackPanel Orientation="Horizontal"
+					Spacing="50">
+			<ToggleButton  >Child</ToggleButton>
+			<ToggleButton>Teen</ToggleButton>
+			<ToggleButton>Adult</ToggleButton>
+		</StackPanel>
+		<Image Source="{Binding AgeImage}"
+			   Width="150"
+			   Height="150"></Image>
+		<TextBlock xml:space = "preserve"
+				   HorizontalAlignment="Center">
+		Child -> Less than 15       
+		Teen -> less than 19	
+		Adult -> above 
+		
+		</TextBlock>
+	</StackPanel>
+</UserControl>

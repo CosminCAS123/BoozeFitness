@@ -61,19 +61,27 @@ namespace BoozeFitness.ViewModels
         }
         private string UsernameToPass;
         private string PinToPass;
+        private string CountryToPass;
+        private NavigationVM nav;
         public ReactiveCommand<Unit , Unit> GoToAgeSelectionCommand { get; set; }
-        public SelectCountryVM(string username , string pin)
+        public SelectCountryVM(string username , string pin , NavigationVM navigationVM)
         {
             Countries = new List<string>() { Country.Romania.ToString() , Country.Italy.ToString() , Country.Spain.ToString() , Country.England.ToString()};
-
+            this.UsernameToPass = username;
+            this.PinToPass = pin;
+            this.nav = navigationVM;
             AddFlagsToDictionary();
             this.WhenAnyValue(x => x.DropDownOpened).
                 Subscribe(x => ChangeFlag());
             var canExecute = this.WhenAnyValue(x => x.AutoCompleteBoxText,
                 (country) =>
                 {
-
-                    if (string.Equals(country as string, "Romania") || string.Equals(country as string, "Italy") || string.Equals(country as string, "England") || string.Equals(country as string, "Spain")) return true;
+                   
+                    if (string.Equals(country, "Romania") || string.Equals(country, "Italy") || string.Equals(country , "England") || string.Equals(country, "Spain"))
+                    {
+                        this.CountryToPass = country;
+                        return true;
+                    }
                     return false;
                 });
 
@@ -81,9 +89,31 @@ namespace BoozeFitness.ViewModels
            
 
         }
-       private void goToAgeSelectionCmd()
+        private Country ToCountry(string country)
         {
+            switch (country) 
+            {
+                case "Romania":
+                    return Country.Romania;
+                    
+                case "Italy":
+                    return Country.Italy;
+                   
+                case "Spain":
+                    return Country.Spain;
+                case "England":
+                    return Country.England;
+                default:
+                    return Country.None;
+                 
+            
+            }
+           
 
+        }
+        private void goToAgeSelectionCmd()
+        {
+            this.nav.CurrentViewmodel = new SelectAgeVM(this.UsernameToPass, this.PinToPass, ToCountry(this.CountryToPass), this.nav);
         }
        private void ChangeFlag()
         {

@@ -13,10 +13,13 @@
 
   
   <ItemGroup>
+    <None Remove="Assets\babyimg (1).png" />
+    <None Remove="Assets\devonlarrat.png" />
     <None Remove="Assets\EnglandIcon.png" />
     <None Remove="Assets\ItalyIcon.png" />
     <None Remove="Assets\RomaniaIcon.png" />
     <None Remove="Assets\SpainIcon.png" />
+    <None Remove="Assets\teenagerimg.png" />
     <None Remove="Assets\wavinganimegirl.png" />
   </ItemGroup>
 
