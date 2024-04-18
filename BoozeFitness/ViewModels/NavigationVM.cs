@@ -19,8 +19,8 @@ namespace BoozeFitness.ViewModels
         public NavigationVM()
         {
             //add first viewmodel
-            // CurrentViewmodel = new DoYouHaveAnAccountVM(this);
-            CurrentViewmodel = new DoYouHaveAnAccountVM(this);
+             CurrentViewmodel = new DoYouHaveAnAccountVM(this);
+            
 
 
         }

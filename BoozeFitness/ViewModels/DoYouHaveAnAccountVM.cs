@@ -25,7 +25,7 @@ namespace BoozeFitness.ViewModels
         }
 
         private void SwitchToCreateAcc() => this.nav.CurrentViewmodel = new EnterYourNameVM(nav);
-        private void SwitchToExistingAcc() => this.nav.CurrentViewmodel = new EnterExistingAccountVM(nav);
+        private void SwitchToExistingAcc() => this.nav.CurrentViewmodel = new EnterAccountVM(nav);
        
 
     }

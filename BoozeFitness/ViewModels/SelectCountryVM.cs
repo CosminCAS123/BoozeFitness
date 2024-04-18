@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
+using BoozeFitness.Repositories;
 using BoozeFitness.Resources;
 using ReactiveUI;
 using System;
@@ -34,11 +35,11 @@ namespace BoozeFitness.ViewModels
         }
          public enum Country
         {
-            Romania,
-            Italy,
-            Spain,
-            England,
-            None
+            Romania = 1,
+            Italy = 2,
+            Spain = 3,
+            England = 4,
+            None = 5
 
         }
         private List<string>? _countries;
@@ -111,10 +112,16 @@ namespace BoozeFitness.ViewModels
            
 
         }
-        private void goToAgeSelectionCmd()
-        {
-            this.nav.CurrentViewmodel = new SelectAgeVM(this.UsernameToPass, this.PinToPass, ToCountry(this.CountryToPass), this.nav);
-        }
+        private void goToAgeSelectionCmd() => this.nav.CurrentViewmodel =new SelectAgeVM(
+            new UserRepository(new Data.DatabaseContext()),
+
+
+
+            this.UsernameToPass,
+            this.PinToPass,
+            CountryToPass, 
+            this.nav);
+        
        private void ChangeFlag()
         {
             //you look for the flag

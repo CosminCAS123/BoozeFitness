@@ -48,10 +48,4 @@
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\DoYouHaveAnAccountView.axaml" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\EnterExistingAccountView.axaml.cs">
-      <DependentUpon>EnterExistingAccountView.axaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>

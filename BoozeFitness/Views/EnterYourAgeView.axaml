@@ -6,7 +6,7 @@
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			 x:DataType="vm:SelectAgeVM"
 			 HorizontalAlignment="Center"
-			 VerticalAlignment="Center"
+			 VerticalAlignment="Top"
 			 Margin="0 , 100 , 0 , 0"
 			 Padding="0 , 0 , 0 , 50"
              x:Class="BoozeFitness.Views.EnterYourAgeView">
@@ -23,19 +23,34 @@
 		  
 		</Style>
 	</UserControl.Styles>
-	<StackPanel Spacing="16">
+
+
+	
+		
+	<StackPanel Spacing="16"
+				VerticalAlignment="Top"
+				Grid.Row="1"
+				>
+		
 		<TextBlock HorizontalAlignment="Center">
 			We need to know your age :)
 		</TextBlock>
 		<StackPanel Orientation="Horizontal"
-					Spacing="50">
+					Spacing="50"
+					>
 			<ToggleButton  >Child</ToggleButton>
 			<ToggleButton>Teen</ToggleButton>
 			<ToggleButton>Adult</ToggleButton>
+			<Button IsVisible="{Binding CanProceed}"
+					Command="{Binding CreateAccountCommand}"
+					Margin="0 , 0  , 0 , 0"
+			>Finish Account</Button>
+			
 		</StackPanel>
 		<Image Source="{Binding AgeImage}"
 			   Width="150"
 			   Height="150"></Image>
+		
 		<TextBlock xml:space = "preserve"
 				   HorizontalAlignment="Center">
 		Child -> Less than 15       
@@ -43,5 +58,7 @@
 		Adult -> above 
 		
 		</TextBlock>
-	</StackPanel>
+			
+			</StackPanel>
+		
 </UserControl>

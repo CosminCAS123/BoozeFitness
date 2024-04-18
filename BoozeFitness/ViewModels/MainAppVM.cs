@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace BoozeFitness.ViewModels
 {
-    
-    public class EnterExistingAccountVM : ViewModelBase
+     public class MainAppVM : ViewModelBase
     {
-        private NavigationVM nav;
-        public EnterExistingAccountVM(NavigationVM navigationVM)
+        private readonly NavigationVM nav;
+        public MainAppVM(NavigationVM navigationVM)
         {
             this.nav = navigationVM;
         }
