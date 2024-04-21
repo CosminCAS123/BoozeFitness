@@ -40,20 +40,10 @@ namespace BoozeFitness.ViewModels
             this.nav = navigationVM;
             var canExecute = this.WhenAnyValue(x => x.Username, (userName) =>
             {
-               
-                if (string.IsNullOrEmpty(userName))
-                {
-                     if (!first_time_entering) Error_Label = ErrorClass.NAME_IS_EMPTY_ERROR;
-                    else first_time_entering = false;   
-                    return false;
-                }
-                if (!userName.All(char.IsLetterOrDigit))
-                {
-                    Error_Label = ErrorClass.NAME_CONTAINS_OTHER_CHAR;      
-                    return false;
-                }
-                Error_Label = ErrorClass.NO_ERROR;
-                return true;
+
+                var canExecuteTuple = AuthObservables.NameCanExecute(userName);
+                this.Error_Label = canExecuteTuple.Item2;
+                return canExecuteTuple.Item1;
             });
            
             GoToPinCommand = ReactiveCommand.Create(goToPinCommand , canExecute);

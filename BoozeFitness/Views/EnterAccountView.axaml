@@ -17,9 +17,18 @@
 		<Button HorizontalAlignment="Center"
 				Width="200"
 				Height="30"
-				HorizontalContentAlignment="Center">
+				HorizontalContentAlignment="Center"
+				Command="{Binding EnterAccountCommand}">
 			Enter 
 			
 		</Button>
+		<Label Content="{Binding Name_Error_Label}"
+			    >
+			
+		</Label>
+		<Label Content="{Binding Pin_Error_Label}">
+			
+		</Label>
+		<Label Content="{Binding Account_Error_Label}"></Label>
 	</StackPanel>
 </UserControl>

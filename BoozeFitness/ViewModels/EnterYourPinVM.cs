@@ -41,20 +41,9 @@ namespace BoozeFitness.ViewModels
             var canExecute = this.WhenAnyValue(x => x.Pin , 
                 (pin) =>
                 {
-                    if (string.IsNullOrEmpty(pin))
-                    {
-                        if (first_time_entering) first_time_entering = false;
-                        else Error_Label = ErrorClass.PIN_IS_EMPTY_ERROR;
-                        return false;
-                    }
-                    if (!pin.All(char.IsDigit))
-                    {
-                        Error_Label = ErrorClass.PIN_CONTAINS_OTHER_CHAR;
-                        return false;
-                    }
-                    if (pin.Length < 6) return false;
-                    Error_Label = ErrorClass.NO_ERROR;
-                    return true;
+                    var canExecuteTuple = AuthObservables.PinCanExecute(pin);
+                    this.Error_Label = canExecuteTuple.Item2;
+                    return canExecuteTuple.Item1;
                 });
             GoToCountrySelectionCommand = ReactiveCommand.Create(goToCountrySelectionCmd, canExecute);
            
