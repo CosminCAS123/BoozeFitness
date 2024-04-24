@@ -3,12 +3,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+			 xmlns:v ="clr-namespace:BoozeFitness.Views;assembly=BoozeFitness"
              mc:Ignorable="d" 
 			 d:DesignWidth="800" 
 			 d:DesignHeight="450"
-			 
-			 
+             x:DataType="vm:MainAppVM"
              x:Class="BoozeFitness.Views.MainAppView"
 			 >
-  Welcome to Avalonia!
+	<Grid RowDefinitions="* , 6*"
+		  x:DataType="vm:MainAppVM">
+		<TabStrip Grid.Row="0"
+				  SelectedIndex="{Binding SelectedTabIndex , Mode=OneWayToSource}">
+			<TabItem Header="Workouts"></TabItem>
+			<TabItem Header="Exercises"></TabItem>
+			<TabItem Header="Progress"></TabItem>
+			<TabItem Header="Profile"></TabItem>
+		</TabStrip>
+		<ContentControl Grid.Row="1" 
+						Content="{Binding CurrentTabView}">
+			<ContentControl.DataTemplates>
+				<DataTemplate DataType="{x:Type vm:ExercisesVM}" >
+					<v:ExercisesView></v:ExercisesView>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type vm:WorkoutsVM}">
+					<v:WorkoutsView></v:WorkoutsView>
+				</DataTemplate>
+				<DataTemplate DataType="{x:Type vm:ExercisesListVM}">
+					<v:ExercisesListView></v:ExercisesListView>
+				</DataTemplate>
+			</ContentControl.DataTemplates>
+			
+		</ContentControl>
+		
+	</Grid>
 </UserControl>

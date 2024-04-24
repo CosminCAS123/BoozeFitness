@@ -46,6 +46,7 @@ namespace BoozeFitness.Services
             catch
             {
                 throw new Exception();
+                        
             }
         }
        

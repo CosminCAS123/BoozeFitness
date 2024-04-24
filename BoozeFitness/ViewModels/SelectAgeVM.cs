@@ -71,7 +71,7 @@ namespace BoozeFitness.ViewModels
             userService.AddUser(user);
             userService.Dispose();
             //enter app
-            this.nav.CurrentViewmodel = new MainAppVM(this.nav);
+            this.nav.CurrentViewmodel = new MainAppVM(this.nav , user);
         }
 
         private void agechosencmd(ToggleButton button)

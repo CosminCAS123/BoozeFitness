@@ -48,4 +48,8 @@
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\DoYouHaveAnAccountView.axaml" />
   </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\ProgressView.axaml" />
+  </ItemGroup>
 </Project>

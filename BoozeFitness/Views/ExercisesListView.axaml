@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:DataType="vm:ExercisesListVM"
+             x:Class="BoozeFitness.Views.ExercisesListView">
+	<Grid>
+		<Grid.RowDefinitions>* , 4* , * , *</Grid.RowDefinitions>
+	<StackPanel HorizontalAlignment="Center"
+				Grid.Row="1">
+		<TextBlock>
+			<Run>Here are some basic </Run>
+			<Run Text="{Binding MuscleGroup}"
+				 FontWeight="Bold"
+				 Foreground="Green"></Run>
+			<Run>exercises</Run>
+		</TextBlock>
+		<ListBox MaxWidth="200"
+				 ItemsSource ="{Binding ExerciseItems}"
+				 SelectionMode="Single"
+				 SelectedItem="{Binding SelectedExercise , Mode=OneWayToSource}"
+				 >
+		
+			
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					
+						<TextBlock Text="{Binding}"
+								   TextAlignment="Center"
+								   
+								  
+								   />
+					
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+			
+			
+		</ListBox>
+	</StackPanel>
+		<Border Grid.Row="2"
+			 BorderBrush="Black"
+				Width="300"
+				BorderThickness="3">
+			<TextBlock TextWrapping="Wrap" 
+					   TextAlignment="Center"
+					   Text="{Binding ExerciseInfo}">
+				
+			</TextBlock>
+			</Border>
+	</Grid>
+</UserControl>

@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:DataType="vm:ExercisesVM"
+             x:Class="BoozeFitness.Views.ExercisesView"
+			 HorizontalAlignment="Stretch"
+			 VerticalAlignment="Center">
+	<StackPanel Spacing="10">
+		<StackPanel.Styles>
+			<Style Selector="Button">
+				<Setter Property="Width" Value="100"></Setter>
+				<Setter Property="Height" Value="30"></Setter>
+				<Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+				<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+				<Setter Property="HorizontalAlignment" Value="Center"></Setter>
+				<Setter Property="CommandParameter" Value="{Binding $self}"></Setter>
+				<Setter Property="Command" Value="{Binding MuscleGroupSelectedCommand}"></Setter>
+			</Style>
+		</StackPanel.Styles>
+		<TextBlock FontFamily="Bold"
+				   FontSize="25"
+				   HorizontalAlignment="Center"
+				   >Select muscle group
+		           </TextBlock>
+		<Button>Biceps</Button>
+		<Button>Triceps</Button>
+		<Button>Chest</Button>
+		<Button>Back</Button>
+		<Button>Forearms</Button>
+		<Button>Shoulders</Button>
+		<Button>Abs</Button>
+		<Button>Legs</Button>
+		
+	</StackPanel>
+ 
+</UserControl>

@@ -27,15 +27,16 @@
 		<DataTemplate DataType="{x:Type vm:EnterAccountVM}">
 			<v:EnterAccountView></v:EnterAccountView>
 		</DataTemplate>
-		
-		
 		<DataTemplate DataType="{x:Type vm:SelectAgeVM}">
 			<v:EnterYourAgeView></v:EnterYourAgeView>
 		</DataTemplate>
 		<DataTemplate DataType ="{x:Type vm:MainAppVM}">
 			<v:MainAppView></v:MainAppView>
 		</DataTemplate>
-		
+		<DataTemplate DataType="{x:Type vm:WorkoutsVM}">
+
+			<v:WorkoutsView></v:WorkoutsView>
+		</DataTemplate>
 
 
 	</Window.DataTemplates>

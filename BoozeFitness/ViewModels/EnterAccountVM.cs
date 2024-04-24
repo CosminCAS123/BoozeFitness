@@ -88,7 +88,7 @@ namespace BoozeFitness.ViewModels
                 var user = service.GetUserByUsername(this.Username);//if it doesn't exist it throws exception
                 service.Dispose();//dispose the context
                 if (string.Equals(user.PIN, this.Pin))//check if it matches with password
-                    this.nav.CurrentViewmodel = new MainAppVM(this.nav);
+                    this.nav.CurrentViewmodel = new MainAppVM(this.nav , user);
                 else
                 {
                     //pin doesn't correspond with username error
