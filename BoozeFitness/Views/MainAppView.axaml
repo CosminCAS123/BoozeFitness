@@ -31,6 +31,9 @@
 				<DataTemplate DataType="{x:Type vm:ExercisesListVM}">
 					<v:ExercisesListView></v:ExercisesListView>
 				</DataTemplate>
+				<DataTemplate DataType="{x:Type vm:WorkoutsTwoVM}">
+					<v:WorkoutTwoView></v:WorkoutTwoView>
+				</DataTemplate>
 			</ContentControl.DataTemplates>
 			
 		</ContentControl>

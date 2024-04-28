@@ -43,7 +43,7 @@ namespace BoozeFitness.ViewModels
             get => this.exercise_info;
             set => this.RaiseAndSetIfChanged(ref this.exercise_info, value);
         }
-        public ExercisesListVM(MainAppVM mainAppVM, ExercisesDictionary.MuscleGroup muscle)
+        public ExercisesListVM(MainAppVM mainAppVM, Enums.MuscleGroup muscle)
         {
             this.mainAppVM = mainAppVM;
             this.MuscleGroup = muscle.ToString();
@@ -52,7 +52,7 @@ namespace BoozeFitness.ViewModels
             
         }
 
-        private void ConfigureList(ExercisesDictionary.MuscleGroup group) => this.ExerciseItems = ExercisesDictionary.GetAllExercises(group);
+        private void ConfigureList(Enums.MuscleGroup group) => this.ExerciseItems = ExercisesDictionary.GetAllExercises(group);
         
     }
 }

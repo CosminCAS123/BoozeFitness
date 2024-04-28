@@ -30,26 +30,26 @@ namespace BoozeFitness.ViewModels
                 based on this, assign the corresponding exercises
 
              */
-            ExercisesDictionary.MuscleGroup muscle_group;
+            Enums.MuscleGroup muscle_group;
             
             switch (pressed.Content!.ToString())
             {
                 case "Biceps":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Biceps; break;
+                    muscle_group = Enums.MuscleGroup.Biceps; break;
                 case "Triceps":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Triceps; break;
+                    muscle_group = Enums.MuscleGroup.Triceps; break;
                 case "Back":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Back; break;
+                    muscle_group = Enums.MuscleGroup.Back; break;
                 case "Legs":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Legs; break;
+                    muscle_group = Enums.MuscleGroup.Legs; break;
                 case "Forearms":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Forearms; break;
+                    muscle_group = Enums.MuscleGroup.Forearms; break;
                 case "Shoulders":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Shoulders;break;
+                    muscle_group = Enums.MuscleGroup.Shoulders;break;
                 case "Abs":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Abs;break;
+                    muscle_group = Enums.MuscleGroup.Abs;break;
                 case "Chest":
-                    muscle_group = ExercisesDictionary.MuscleGroup.Chest;break;
+                    muscle_group = Enums.MuscleGroup.Chest;break;
                 default:throw new Exception();
 
             }

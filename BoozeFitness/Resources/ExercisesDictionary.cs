@@ -6,24 +6,16 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-
+using BoozeFitness.Resources;
+using BoozeFitness.Services;
 namespace BoozeFitness.Resources
 {
     public static class ExercisesDictionary
     {
      
-        public enum MuscleGroup
-        {
-            Biceps,
-            Forearms,
-            Legs,
-            Abs,
-            Back,
-            Shoulders,
-            Chest,
-            Triceps
-        }
+      
         public static Dictionary<string, string>? GetExerciseInfo { get; private set; }
+        public static Dictionary<Enums.WorkoutDifficulty, string> WorkoutDuration { get; private set; }
 
         static ExercisesDictionary() => LoadInfo();
         
@@ -112,28 +104,26 @@ namespace BoozeFitness.Resources
         }
 
       
-        public static IEnumerable<string> GetAllExercises(MuscleGroup group)
+        public static IEnumerable<string> GetAllExercises(Enums.MuscleGroup group)
         {
             switch (group)
             {
-                case MuscleGroup.Biceps:
+                case Enums.MuscleGroup.Biceps:
                     return Biceps.GetAllExercises();
-                case MuscleGroup.Abs:
+                case Enums.MuscleGroup.Abs:
                     return Abs.GetAllExercises();
 
-                case MuscleGroup.Forearms:
+                case Enums.MuscleGroup.Forearms:
                     return Forearms.GetAllExercises();
-                case MuscleGroup.Legs:
+                case Enums.MuscleGroup.Legs:
                     return Legs.GetAllExercises();
-                case MuscleGroup.Shoulders:
+                case Enums.MuscleGroup.Shoulders:
                     return Shoulders.GetAllExercises();
-
-                case MuscleGroup.Chest:
+                case Enums.MuscleGroup.Chest:
                     return Chest.GetAllExercises();
-                case MuscleGroup.Triceps:
+                case Enums.MuscleGroup.Triceps:
                     return Triceps.GetAllExercises();
-
-                case MuscleGroup.Back:
+                case Enums.MuscleGroup.Back:
                     return Back.GetAllExercises();
             }
             throw new ArgumentException();
@@ -142,6 +132,13 @@ namespace BoozeFitness.Resources
        
         private static void LoadInfo()
         {
+            WorkoutDuration = new Dictionary<Enums.WorkoutDifficulty, string>
+            {
+                { Enums.WorkoutDifficulty.Beginner, "10 minutes" },
+                { Enums.WorkoutDifficulty.Intermediate, "20 minutes" },
+                { Enums.WorkoutDifficulty.Advanced, "30 minutes" }
+            };
+
             GetExerciseInfo = new Dictionary<string, string>();
 
             GetExerciseInfo[Biceps.HammerCurl] = "Hammer curls are a biceps exercise performed with a neutral grip, targeting the brachialis and brachioradialis muscles in addition to the biceps.";
@@ -192,6 +189,8 @@ namespace BoozeFitness.Resources
 
             GetExerciseInfo[Chest.ChestFlies] = "Chest flies target the chest muscles, involving bringing the arms together in a fly motion while holding weights, such as dumbbells or cables.";
         }
+
+
 
     }
 }

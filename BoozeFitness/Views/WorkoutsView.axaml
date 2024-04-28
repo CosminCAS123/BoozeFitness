@@ -15,15 +15,18 @@
 			<Setter Property="Height" Value="40"></Setter>
 			<Setter Property="FontSize" Value="20"></Setter>
 			<Setter Property="CornerRadius" Value="20"></Setter>
+			<Setter Property="CommandParameter" Value="{Binding $self}"></Setter>
+			<Setter Property="Command" Value="{Binding DifficultyCommand}"></Setter>
 			<Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
 			<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
 		</Style>
 	</UserControl.Styles>
 	<StackPanel Spacing="10">
+		
 		<Button>
 			Beginner
 		</Button>
-		<Button>
+		<Button >
 			Intermediate
 		</Button>
 		<Button>
