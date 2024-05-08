@@ -78,14 +78,14 @@ namespace BoozeFitness.ViewModels
             this.EnterAccountCommand = ReactiveCommand.Create(enteracccmd, CanExecute);
         }
         #endregion
-        private void enteracccmd()
+        private async void enteracccmd()
         {
 
 
             try
             {
                 var service = new UserService();
-                var user = service.GetUserByUsername(this.Username);//if it doesn't exist it throws exception
+                var user = await service.GetUserByUsernameAsync(this.Username);//if it doesn't exist it throws exception
                 service.Dispose();//dispose the context
                 if (string.Equals(user.PIN, this.Pin))//check if it matches with password
                     this.nav.CurrentViewmodel = new MainAppVM(this.nav , user);

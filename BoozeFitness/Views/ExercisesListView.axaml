@@ -9,7 +9,8 @@
 	<Grid>
 		<Grid.RowDefinitions>* , 4* , * , *</Grid.RowDefinitions>
 	<StackPanel HorizontalAlignment="Center"
-				Grid.Row="1">
+				Grid.Row="1"
+				Spacing="10">
 		<TextBlock>
 			<Run>Here are some basic </Run>
 			<Run Text="{Binding MuscleGroup}"

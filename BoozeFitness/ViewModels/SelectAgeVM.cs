@@ -14,6 +14,7 @@ using System.Threading;
 using BoozeFitness.Models;
 using BoozeFitness.Data;
 using BoozeFitness.Services;
+using BoozeFitness.Repositories;
 
 namespace BoozeFitness.ViewModels
 {
@@ -48,10 +49,10 @@ namespace BoozeFitness.ViewModels
             Adult = 3
         }
         private string AgeToPass;
-        private IRepository<User> UserRepository;
+        private UserRepository UserRepository;
         public SelectAgeVM(IRepository<User> userRepository , string username, string pin , string country, NavigationVM navigationVM )
         {
-            this.UserRepository = userRepository;
+            this.UserRepository = (UserRepository)userRepository;
             //
             //
 
@@ -63,12 +64,12 @@ namespace BoozeFitness.ViewModels
             this.CreateAccountCommand = ReactiveCommand.Create(createacccmd);
         }
        
-        private void createacccmd()
+        private async void createacccmd()
         {
             //add in db
             var user = new User(this.CountryToPass, this.UsernameToPass, this.PinToPass, this.AgeToPass);
             var userService = new UserService(this.UserRepository);
-            userService.AddUser(user);
+            await userService.AddUserAsync(user);
             userService.Dispose();
             //enter app
             this.nav.CurrentViewmodel = new MainAppVM(this.nav , user);

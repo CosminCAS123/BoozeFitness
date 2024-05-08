@@ -1,4 +1,5 @@
 ﻿using BoozeFitness.Models;
+using BoozeFitness.Views;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;

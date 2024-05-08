@@ -3,8 +3,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:vm ="clr-namespace:BoozeFitness.ViewModels;assembly=BoozeFitness"
+			 xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			 x:DataType="vm:ProgressVM"
-             x:Class="BoozeFitness.Views.ProgressView">
-            
-</UserControl>
+             x:Class="BoozeFitness.Views.ProgressView"
+			 HorizontalAlignment="Stretch">
+	<Grid RowDefinitions="* , 5* , *"
+		  ColumnDefinitions="* , 10* , *">
+		<TextBlock FontSize="20"
+				   Grid.Row="0"
+				   Grid.Column="1"
+				   Margin="0 , 5 , 0 , 0"
+				   HorizontalAlignment="Center"
+				   >
+			Congrats! So far you've done <Run FontWeight="Bold"
+				   Foreground="Red">10</Run> workouts
+		</TextBlock>
+		<Border Grid.Row="1"
+				Grid.Column="1"
+				BorderBrush="Black"
+				BorderThickness="3"
+				>
+		<ListBox
+			></ListBox>
+		</Border>
+		<Button Width="50"
+				Height="50"
+				Grid.Column="2"
+				Background="Transparent"
+		        HorizontalAlignment="Right"
+				Margin="0 , 0 , 10 , 10"
+				Grid.Row="2"
+				>
+			<materialIcons:MaterialIcon Kind="Medal"
+										Width="40"
+										Height="40"></materialIcons:MaterialIcon>
+
+		</Button>
+	</Grid>
+	</UserControl>

@@ -12,7 +12,7 @@ namespace BoozeFitness.Services
     public class UserService
     {
         #region UserRepository
-        private readonly IRepository<User> userRepository;
+        private readonly UserRepository userRepository;
         #endregion
 
         #region Constructors
@@ -20,26 +20,31 @@ namespace BoozeFitness.Services
         {
             this.userRepository = new UserRepository(new DatabaseContext());
         }
-        public UserService(IRepository<User> userRepository)
+        public UserService(UserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
         #endregion
 
         #region Methods
-        public void AddUser(User user) => this.userRepository.Add(user);
+        public async Task<IEnumerable<Workout>> GetWorkoutsAsync(int id)
+        {
+            var user = await this.userRepository.GetByIdAsync(id);
+            return user.Workouts;
+        }
+        public async Task AddUserAsync(User user) => await this.userRepository.AddAsync(user);
 
-        public void DeleteUserById(int ID) => this.userRepository.Delete(ID);
+        public async Task DeleteUserByIdAsync(int ID) => await this.userRepository.DeleteAsync(ID);
 
-        public void DeleteUser(User user) => this.userRepository.Delete(user);
+        public async Task DeleteUserByIdAsync(User user) => await this.userRepository.DeleteAsync(user);
         
-        public User GetUserById(int ID) => this.userRepository.GetById(ID);
+        public async Task<User> GetUserByIdAsync(int ID) => await this.userRepository.GetByIdAsync(ID);
         
-        public User GetUserByUsername(string username)
+        public async Task<User> GetUserByUsernameAsync(string username)
         {
             try
             {
-                var user = ((UserRepository)this.userRepository).GetByUsername(username);
+                var user = await this.userRepository.GetByUsernameAsync(username);
                 return user;
 
             }

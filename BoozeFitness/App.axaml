@@ -3,11 +3,12 @@
 			 
              x:Class="BoozeFitness.App"
 			   xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
-
+xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 	<Application.Styles>
 		<themes:MaterialTheme BaseTheme="Dark" PrimaryColor="Purple" SecondaryColor="Lime" />
+		<materialIcons:MaterialIconStyles />
 	</Application.Styles>
 
 </Application>

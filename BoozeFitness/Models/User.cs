@@ -18,7 +18,7 @@ namespace BoozeFitness.Models
 
         public string Age { get; set; }
 
-       
+        public ICollection<Workout> Workouts { get; set; }
         public string Username { get; set; }
         
         public string PIN { get; set; }

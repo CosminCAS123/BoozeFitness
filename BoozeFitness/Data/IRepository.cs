@@ -10,13 +10,13 @@ namespace BoozeFitness.Data
     public interface IRepository<T>
     {
         
-        T GetById(int id);
-       IEnumerable<T> GetAll();
-        void Add(T entity);
+        Task<T> GetByIdAsync(int id);
+        IEnumerable<T> GetAll();
+        Task AddAsync(T entity);
     
-        void Delete(int id);
+        Task DeleteAsync(int id);
 
-        void Delete(T entity);
+        Task DeleteAsync(T entity);
 
         void DisposeContext();
 

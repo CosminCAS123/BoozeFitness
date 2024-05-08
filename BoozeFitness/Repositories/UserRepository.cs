@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlTypes;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BoozeFitness.Repositories
 {
@@ -23,38 +24,42 @@ namespace BoozeFitness.Repositories
             this.context = new DatabaseContext();
         }
 
-        public void Add(User entity)
+      
+
+        public async Task AddAsync(User entity)
         {
-            this.context.Users.Add(entity);
+            await Task.Run(() => this.context.Users.Add(entity));
             this.context.SaveChanges();
             
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            this.context.Remove(GetById(id));
+            var user = await GetByIdAsync(id);
+            await Task.Run(() => this.context?.Users.Remove(user));
             this.context.SaveChanges();
         }
 
-        public void Delete(User entity)
+        public async Task DeleteAsync(User entity)
         {
-            this.context.Remove(entity);
+            await Task.Run(() => this.context.Remove(entity));
             this.context.SaveChanges();
         }
 
-        public IEnumerable<User> GetAll()
+        public  IEnumerable<User> GetAll()
         {
-            return this.context.Users.ToList();
+            return this.context.Users;
         }
 
-        public User GetById(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
-            return this.context.Users.Find(id)!;
+            return await Task.Run(() =>  this.context.Users.Find(id)!);
+
         }
 
-        public User GetByUsername(string username)
+        public async Task<User> GetByUsernameAsync(string username)
         {
-            var user = this.context.Users.FirstOrDefault(x => x.Username == username);
+            var user = await Task.Run(() => this.context.Users.FirstOrDefault(x => x.Username == username));
             if (user is not null) return user;
             throw new Exception();
         }
